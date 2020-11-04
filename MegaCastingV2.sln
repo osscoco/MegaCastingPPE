@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MegaCastingV2.DB", "MegaCastingV2.DB\MegaCastingV2.DB.sqlproj", "{79092C68-AE5D-4818-BA0F-F0F63D9232FB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaCastingV2.DBlib", "MegastingV2.DBlib\MegaCastingV2.DBlib.csproj", "{D2815385-2A86-43C6-90EE-78F8BE325A27}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaCastingV2.WPF", "MegaCastingV2.WPF\MegaCastingV2.WPF.csproj", "{CF45E32A-FC4D-4D8E-B924-7BED27B273EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{79092C68-AE5D-4818-BA0F-F0F63D9232FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79092C68-AE5D-4818-BA0F-F0F63D9232FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79092C68-AE5D-4818-BA0F-F0F63D9232FB}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{79092C68-AE5D-4818-BA0F-F0F63D9232FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79092C68-AE5D-4818-BA0F-F0F63D9232FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79092C68-AE5D-4818-BA0F-F0F63D9232FB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{D2815385-2A86-43C6-90EE-78F8BE325A27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2815385-2A86-43C6-90EE-78F8BE325A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2815385-2A86-43C6-90EE-78F8BE325A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2815385-2A86-43C6-90EE-78F8BE325A27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF45E32A-FC4D-4D8E-B924-7BED27B273EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF45E32A-FC4D-4D8E-B924-7BED27B273EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF45E32A-FC4D-4D8E-B924-7BED27B273EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF45E32A-FC4D-4D8E-B924-7BED27B273EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4A4CFE0B-6562-4DFC-89A6-4AF78F23A0A9}
+	EndGlobalSection
+EndGlobal

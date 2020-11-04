@@ -1,0 +1,603 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="MegacastingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Annonce">
+          <Key>
+            <PropertyRef Name="ID_ANN" />
+          </Key>
+          <Property Name="ID_ANN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Intitulée_ANN" Type="nchar" MaxLength="125" Nullable="false" />
+          <Property Name="Date_Pub_ANN" Type="date" Nullable="false" />
+          <Property Name="Date_Deb_ANN" Type="date" Nullable="false" />
+          <Property Name="Date_Fin_ANN" Type="date" />
+          <Property Name="IdContrat" Type="int" Nullable="false" />
+          <Property Name="IdPro" Type="int" Nullable="false" />
+          <Property Name="IdEmp" Type="int" Nullable="false" />
+          <Property Name="IdVille" Type="int" Nullable="false" />
+          <Property Name="IdMetier" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Artiste">
+          <Key>
+            <PropertyRef Name="ID_ART" />
+          </Key>
+          <Property Name="ID_ART" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prenom_ART" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Nom_ART" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Date_Nai_ART" Type="date" Nullable="false" />
+          <Property Name="Mail_ART" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pass_ART" Type="nchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Candidature">
+          <Key>
+            <PropertyRef Name="ID_CAND" />
+          </Key>
+          <Property Name="ID_CAND" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Objet_CAND" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="Date_Pub_CAND" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description_CAND" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="IdAnnonce" Type="int" Nullable="false" />
+          <Property Name="IdArtiste" Type="int" Nullable="false" />
+          <Property Name="IdStatut" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contrat">
+          <Key>
+            <PropertyRef Name="ID_Contrat" />
+          </Key>
+          <Property Name="ID_Contrat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Libelle_Contrat" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employe">
+          <Key>
+            <PropertyRef Name="ID_EMP" />
+          </Key>
+          <Property Name="ID_EMP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prenom_EMP" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom_EMP" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mail_EMP" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pass_EMP" Type="nchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Metier">
+          <Key>
+            <PropertyRef Name="ID_Metier" />
+          </Key>
+          <Property Name="ID_Metier" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Libellée_Metier" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Professionnel">
+          <Key>
+            <PropertyRef Name="ID_PRO" />
+          </Key>
+          <Property Name="ID_PRO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Prenom_PRO" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom_PRO" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mail_PRO" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pass_PRO" Type="nchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Statut">
+          <Key>
+            <PropertyRef Name="ID_Statut" />
+          </Key>
+          <Property Name="ID_Statut" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Libellée_Statut" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ville">
+          <Key>
+            <PropertyRef Name="ID_Ville" />
+          </Key>
+          <Property Name="ID_Ville" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Libellée_VILLE" Type="nchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Annonce_Contrat">
+          <End Role="Contrat" Type="Self.Contrat" Multiplicity="1" />
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contrat">
+              <PropertyRef Name="ID_Contrat" />
+            </Principal>
+            <Dependent Role="Annonce">
+              <PropertyRef Name="IdContrat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Annonce_Employe">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="1" />
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="ID_EMP" />
+            </Principal>
+            <Dependent Role="Annonce">
+              <PropertyRef Name="IdEmp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Annonce_Metier">
+          <End Role="Metier" Type="Self.Metier" Multiplicity="1" />
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metier">
+              <PropertyRef Name="ID_Metier" />
+            </Principal>
+            <Dependent Role="Annonce">
+              <PropertyRef Name="IdMetier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Annonce_Professionnel">
+          <End Role="Professionnel" Type="Self.Professionnel" Multiplicity="1" />
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Professionnel">
+              <PropertyRef Name="ID_PRO" />
+            </Principal>
+            <Dependent Role="Annonce">
+              <PropertyRef Name="IdPro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Annonce_Ville">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="1" />
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="ID_Ville" />
+            </Principal>
+            <Dependent Role="Annonce">
+              <PropertyRef Name="IdVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidature_Annonce">
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="1" />
+          <End Role="Candidature" Type="Self.Candidature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Annonce">
+              <PropertyRef Name="ID_ANN" />
+            </Principal>
+            <Dependent Role="Candidature">
+              <PropertyRef Name="IdAnnonce" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidature_Artiste">
+          <End Role="Artiste" Type="Self.Artiste" Multiplicity="1" />
+          <End Role="Candidature" Type="Self.Candidature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artiste">
+              <PropertyRef Name="ID_ART" />
+            </Principal>
+            <Dependent Role="Candidature">
+              <PropertyRef Name="IdArtiste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidature_Statut">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Candidature" Type="Self.Candidature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="ID_Statut" />
+            </Principal>
+            <Dependent Role="Candidature">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MegacastingModelStoreContainer">
+          <EntitySet Name="Annonce" EntityType="Self.Annonce" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Artiste" EntityType="Self.Artiste" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Candidature" EntityType="Self.Candidature" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contrat" EntityType="Self.Contrat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employe" EntityType="Self.Employe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Metier" EntityType="Self.Metier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Professionnel" EntityType="Self.Professionnel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Statut" EntityType="Self.Statut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ville" EntityType="Self.Ville" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Annonce_Contrat" Association="Self.FK_Annonce_Contrat">
+            <End Role="Contrat" EntitySet="Contrat" />
+            <End Role="Annonce" EntitySet="Annonce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Annonce_Employe" Association="Self.FK_Annonce_Employe">
+            <End Role="Employe" EntitySet="Employe" />
+            <End Role="Annonce" EntitySet="Annonce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Annonce_Metier" Association="Self.FK_Annonce_Metier">
+            <End Role="Metier" EntitySet="Metier" />
+            <End Role="Annonce" EntitySet="Annonce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Annonce_Professionnel" Association="Self.FK_Annonce_Professionnel">
+            <End Role="Professionnel" EntitySet="Professionnel" />
+            <End Role="Annonce" EntitySet="Annonce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Annonce_Ville" Association="Self.FK_Annonce_Ville">
+            <End Role="Ville" EntitySet="Ville" />
+            <End Role="Annonce" EntitySet="Annonce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidature_Annonce" Association="Self.FK_Candidature_Annonce">
+            <End Role="Annonce" EntitySet="Annonce" />
+            <End Role="Candidature" EntitySet="Candidature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidature_Artiste" Association="Self.FK_Candidature_Artiste">
+            <End Role="Artiste" EntitySet="Artiste" />
+            <End Role="Candidature" EntitySet="Candidature" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidature_Statut" Association="Self.FK_Candidature_Statut">
+            <End Role="Statut" EntitySet="Statut" />
+            <End Role="Candidature" EntitySet="Candidature" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MegacastingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Annonce">
+          <Key>
+            <PropertyRef Name="ID_ANN" />
+          </Key>
+          <Property Name="ID_ANN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Intitulée_ANN" Type="String" MaxLength="125" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Date_Pub_ANN" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_Deb_ANN" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Date_Fin_ANN" Type="DateTime" Precision="0" />
+          <Property Name="IdContrat" Type="Int32" Nullable="false" />
+          <Property Name="IdPro" Type="Int32" Nullable="false" />
+          <Property Name="IdEmp" Type="Int32" Nullable="false" />
+          <Property Name="IdVille" Type="Int32" Nullable="false" />
+          <Property Name="IdMetier" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Contrat" Relationship="Self.FK_Annonce_Contrat" FromRole="Annonce" ToRole="Contrat" />
+          <NavigationProperty Name="Employe" Relationship="Self.FK_Annonce_Employe" FromRole="Annonce" ToRole="Employe" />
+          <NavigationProperty Name="Metier" Relationship="Self.FK_Annonce_Metier" FromRole="Annonce" ToRole="Metier" />
+          <NavigationProperty Name="Professionnel" Relationship="Self.FK_Annonce_Professionnel" FromRole="Annonce" ToRole="Professionnel" />
+          <NavigationProperty Name="Ville" Relationship="Self.FK_Annonce_Ville" FromRole="Annonce" ToRole="Ville" />
+          <NavigationProperty Name="Candidatures" Relationship="Self.FK_Candidature_Annonce" FromRole="Annonce" ToRole="Candidature" />
+        </EntityType>
+        <EntityType Name="Artiste">
+          <Key>
+            <PropertyRef Name="ID_ART" />
+          </Key>
+          <Property Name="ID_ART" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prenom_ART" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Nom_ART" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Date_Nai_ART" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Mail_ART" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Pass_ART" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Candidatures" Relationship="Self.FK_Candidature_Artiste" FromRole="Artiste" ToRole="Candidature" />
+        </EntityType>
+        <EntityType Name="Candidature">
+          <Key>
+            <PropertyRef Name="ID_CAND" />
+          </Key>
+          <Property Name="ID_CAND" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Objet_CAND" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Date_Pub_CAND" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Description_CAND" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="IdAnnonce" Type="Int32" Nullable="false" />
+          <Property Name="IdArtiste" Type="Int32" Nullable="false" />
+          <Property Name="IdStatut" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Annonce" Relationship="Self.FK_Candidature_Annonce" FromRole="Candidature" ToRole="Annonce" />
+          <NavigationProperty Name="Artiste" Relationship="Self.FK_Candidature_Artiste" FromRole="Candidature" ToRole="Artiste" />
+          <NavigationProperty Name="Statut" Relationship="Self.FK_Candidature_Statut" FromRole="Candidature" ToRole="Statut" />
+        </EntityType>
+        <EntityType Name="Contrat">
+          <Key>
+            <PropertyRef Name="ID_Contrat" />
+          </Key>
+          <Property Name="ID_Contrat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Libelle_Contrat" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Contrat" FromRole="Contrat" ToRole="Annonce" />
+        </EntityType>
+        <EntityType Name="Employe">
+          <Key>
+            <PropertyRef Name="ID_EMP" />
+          </Key>
+          <Property Name="ID_EMP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prenom_EMP" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Nom_EMP" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Mail_EMP" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Pass_EMP" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Employe" FromRole="Employe" ToRole="Annonce" />
+        </EntityType>
+        <EntityType Name="Metier">
+          <Key>
+            <PropertyRef Name="ID_Metier" />
+          </Key>
+          <Property Name="ID_Metier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Libellée_Metier" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Metier" FromRole="Metier" ToRole="Annonce" />
+        </EntityType>
+        <EntityType Name="Professionnel">
+          <Key>
+            <PropertyRef Name="ID_PRO" />
+          </Key>
+          <Property Name="ID_PRO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Prenom_PRO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Nom_PRO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Mail_PRO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Pass_PRO" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Professionnel" FromRole="Professionnel" ToRole="Annonce" />
+        </EntityType>
+        <EntityType Name="Statut">
+          <Key>
+            <PropertyRef Name="ID_Statut" />
+          </Key>
+          <Property Name="ID_Statut" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Libellée_Statut" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Candidatures" Relationship="Self.FK_Candidature_Statut" FromRole="Statut" ToRole="Candidature" />
+        </EntityType>
+        <EntityType Name="Ville">
+          <Key>
+            <PropertyRef Name="ID_Ville" />
+          </Key>
+          <Property Name="ID_Ville" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Libellée_VILLE" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Ville" FromRole="Ville" ToRole="Annonce" />
+        </EntityType>
+        <Association Name="FK_Annonce_Contrat">
+          <End Role="Contrat" Type="Self.Contrat" Multiplicity="1" />
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Contrat">
+              <PropertyRef Name="ID_Contrat" />
+            </Principal>
+            <Dependent Role="Annonce">
+              <PropertyRef Name="IdContrat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Annonce_Employe">
+          <End Role="Employe" Type="Self.Employe" Multiplicity="1" />
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employe">
+              <PropertyRef Name="ID_EMP" />
+            </Principal>
+            <Dependent Role="Annonce">
+              <PropertyRef Name="IdEmp" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Annonce_Metier">
+          <End Role="Metier" Type="Self.Metier" Multiplicity="1" />
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metier">
+              <PropertyRef Name="ID_Metier" />
+            </Principal>
+            <Dependent Role="Annonce">
+              <PropertyRef Name="IdMetier" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Annonce_Professionnel">
+          <End Role="Professionnel" Type="Self.Professionnel" Multiplicity="1" />
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Professionnel">
+              <PropertyRef Name="ID_PRO" />
+            </Principal>
+            <Dependent Role="Annonce">
+              <PropertyRef Name="IdPro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Annonce_Ville">
+          <End Role="Ville" Type="Self.Ville" Multiplicity="1" />
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ville">
+              <PropertyRef Name="ID_Ville" />
+            </Principal>
+            <Dependent Role="Annonce">
+              <PropertyRef Name="IdVille" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidature_Annonce">
+          <End Role="Annonce" Type="Self.Annonce" Multiplicity="1" />
+          <End Role="Candidature" Type="Self.Candidature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Annonce">
+              <PropertyRef Name="ID_ANN" />
+            </Principal>
+            <Dependent Role="Candidature">
+              <PropertyRef Name="IdAnnonce" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidature_Artiste">
+          <End Role="Artiste" Type="Self.Artiste" Multiplicity="1" />
+          <End Role="Candidature" Type="Self.Candidature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Artiste">
+              <PropertyRef Name="ID_ART" />
+            </Principal>
+            <Dependent Role="Candidature">
+              <PropertyRef Name="IdArtiste" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Candidature_Statut">
+          <End Role="Statut" Type="Self.Statut" Multiplicity="1" />
+          <End Role="Candidature" Type="Self.Candidature" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Statut">
+              <PropertyRef Name="ID_Statut" />
+            </Principal>
+            <Dependent Role="Candidature">
+              <PropertyRef Name="IdStatut" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MegaCastingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Annonces" EntityType="Self.Annonce" />
+          <EntitySet Name="Artistes" EntityType="Self.Artiste" />
+          <EntitySet Name="Candidatures" EntityType="Self.Candidature" />
+          <EntitySet Name="Contrats" EntityType="Self.Contrat" />
+          <EntitySet Name="Employes" EntityType="Self.Employe" />
+          <EntitySet Name="Metiers" EntityType="Self.Metier" />
+          <EntitySet Name="Professionnels" EntityType="Self.Professionnel" />
+          <EntitySet Name="Statuts" EntityType="Self.Statut" />
+          <EntitySet Name="Villes" EntityType="Self.Ville" />
+          <AssociationSet Name="FK_Annonce_Contrat" Association="Self.FK_Annonce_Contrat">
+            <End Role="Contrat" EntitySet="Contrats" />
+            <End Role="Annonce" EntitySet="Annonces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Annonce_Employe" Association="Self.FK_Annonce_Employe">
+            <End Role="Employe" EntitySet="Employes" />
+            <End Role="Annonce" EntitySet="Annonces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Annonce_Metier" Association="Self.FK_Annonce_Metier">
+            <End Role="Metier" EntitySet="Metiers" />
+            <End Role="Annonce" EntitySet="Annonces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Annonce_Professionnel" Association="Self.FK_Annonce_Professionnel">
+            <End Role="Professionnel" EntitySet="Professionnels" />
+            <End Role="Annonce" EntitySet="Annonces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Annonce_Ville" Association="Self.FK_Annonce_Ville">
+            <End Role="Ville" EntitySet="Villes" />
+            <End Role="Annonce" EntitySet="Annonces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidature_Annonce" Association="Self.FK_Candidature_Annonce">
+            <End Role="Annonce" EntitySet="Annonces" />
+            <End Role="Candidature" EntitySet="Candidatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidature_Artiste" Association="Self.FK_Candidature_Artiste">
+            <End Role="Artiste" EntitySet="Artistes" />
+            <End Role="Candidature" EntitySet="Candidatures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Candidature_Statut" Association="Self.FK_Candidature_Statut">
+            <End Role="Statut" EntitySet="Statuts" />
+            <End Role="Candidature" EntitySet="Candidatures" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MegacastingModelStoreContainer" CdmEntityContainer="MegaCastingEntities">
+          <EntitySetMapping Name="Annonces">
+            <EntityTypeMapping TypeName="MegacastingModel.Annonce">
+              <MappingFragment StoreEntitySet="Annonce">
+                <ScalarProperty Name="ID_ANN" ColumnName="ID_ANN" />
+                <ScalarProperty Name="Intitulée_ANN" ColumnName="Intitulée_ANN" />
+                <ScalarProperty Name="Date_Pub_ANN" ColumnName="Date_Pub_ANN" />
+                <ScalarProperty Name="Date_Deb_ANN" ColumnName="Date_Deb_ANN" />
+                <ScalarProperty Name="Date_Fin_ANN" ColumnName="Date_Fin_ANN" />
+                <ScalarProperty Name="IdContrat" ColumnName="IdContrat" />
+                <ScalarProperty Name="IdPro" ColumnName="IdPro" />
+                <ScalarProperty Name="IdEmp" ColumnName="IdEmp" />
+                <ScalarProperty Name="IdVille" ColumnName="IdVille" />
+                <ScalarProperty Name="IdMetier" ColumnName="IdMetier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Artistes">
+            <EntityTypeMapping TypeName="MegacastingModel.Artiste">
+              <MappingFragment StoreEntitySet="Artiste">
+                <ScalarProperty Name="ID_ART" ColumnName="ID_ART" />
+                <ScalarProperty Name="Prenom_ART" ColumnName="Prenom_ART" />
+                <ScalarProperty Name="Nom_ART" ColumnName="Nom_ART" />
+                <ScalarProperty Name="Date_Nai_ART" ColumnName="Date_Nai_ART" />
+                <ScalarProperty Name="Mail_ART" ColumnName="Mail_ART" />
+                <ScalarProperty Name="Pass_ART" ColumnName="Pass_ART" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Candidatures">
+            <EntityTypeMapping TypeName="MegacastingModel.Candidature">
+              <MappingFragment StoreEntitySet="Candidature">
+                <ScalarProperty Name="ID_CAND" ColumnName="ID_CAND" />
+                <ScalarProperty Name="Objet_CAND" ColumnName="Objet_CAND" />
+                <ScalarProperty Name="Date_Pub_CAND" ColumnName="Date_Pub_CAND" />
+                <ScalarProperty Name="Description_CAND" ColumnName="Description_CAND" />
+                <ScalarProperty Name="IdAnnonce" ColumnName="IdAnnonce" />
+                <ScalarProperty Name="IdArtiste" ColumnName="IdArtiste" />
+                <ScalarProperty Name="IdStatut" ColumnName="IdStatut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contrats">
+            <EntityTypeMapping TypeName="MegacastingModel.Contrat">
+              <MappingFragment StoreEntitySet="Contrat">
+                <ScalarProperty Name="ID_Contrat" ColumnName="ID_Contrat" />
+                <ScalarProperty Name="Libelle_Contrat" ColumnName="Libelle_Contrat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employes">
+            <EntityTypeMapping TypeName="MegacastingModel.Employe">
+              <MappingFragment StoreEntitySet="Employe">
+                <ScalarProperty Name="ID_EMP" ColumnName="ID_EMP" />
+                <ScalarProperty Name="Prenom_EMP" ColumnName="Prenom_EMP" />
+                <ScalarProperty Name="Nom_EMP" ColumnName="Nom_EMP" />
+                <ScalarProperty Name="Mail_EMP" ColumnName="Mail_EMP" />
+                <ScalarProperty Name="Pass_EMP" ColumnName="Pass_EMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Metiers">
+            <EntityTypeMapping TypeName="MegacastingModel.Metier">
+              <MappingFragment StoreEntitySet="Metier">
+                <ScalarProperty Name="ID_Metier" ColumnName="ID_Metier" />
+                <ScalarProperty Name="Libellée_Metier" ColumnName="Libellée_Metier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Professionnels">
+            <EntityTypeMapping TypeName="MegacastingModel.Professionnel">
+              <MappingFragment StoreEntitySet="Professionnel">
+                <ScalarProperty Name="ID_PRO" ColumnName="ID_PRO" />
+                <ScalarProperty Name="Prenom_PRO" ColumnName="Prenom_PRO" />
+                <ScalarProperty Name="Nom_PRO" ColumnName="Nom_PRO" />
+                <ScalarProperty Name="Mail_PRO" ColumnName="Mail_PRO" />
+                <ScalarProperty Name="Pass_PRO" ColumnName="Pass_PRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Statuts">
+            <EntityTypeMapping TypeName="MegacastingModel.Statut">
+              <MappingFragment StoreEntitySet="Statut">
+                <ScalarProperty Name="ID_Statut" ColumnName="ID_Statut" />
+                <ScalarProperty Name="Libellée_Statut" ColumnName="Libellée_Statut" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Villes">
+            <EntityTypeMapping TypeName="MegacastingModel.Ville">
+              <MappingFragment StoreEntitySet="Ville">
+                <ScalarProperty Name="ID_Ville" ColumnName="ID_Ville" />
+                <ScalarProperty Name="Libellée_VILLE" ColumnName="Libellée_VILLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Aucun" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
