@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace MegaCastingV2.WPF.View
 {
     /// <summary>
-    /// Logique d'interaction pour ViewAnnonce.xaml
+    /// Logique d'interaction pour ViewVille.xaml
     /// </summary>
-    public partial class ViewAnnonce : UserControl
+    public partial class ViewVille : UserControl
     {
-        public ViewAnnonce()
+        public ViewVille()
         {
             InitializeComponent();
         }
@@ -31,27 +31,27 @@ namespace MegaCastingV2.WPF.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _ButtonAddAnnonce_Click(object sender, RoutedEventArgs e)
+        private void _ButtonAddVille_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelAnnonce)this.DataContext).AddAnnonce();
+            ((ViewModelVille)this.DataContext).AddVille();
         }
         // <summary>
         /// Défini le comportement lors du clic sur le bouton de sauvegarde
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _ButtonSaveAnnonce_Click(object sender, RoutedEventArgs e)
+        private void _ButtonSaveVille_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelAnnonce)this.DataContext).Save(Libelle_TextBox.Text);
+            ((ViewModelVille)this.DataContext).SaveChanges();
         }
         // <summary>
         /// Défini le comportement lors du clic sur le bouton de suppression
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _ButtonDeleteAnnonce_Click(object sender, RoutedEventArgs e)
+        private void _ButtonDeleteVille_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelAnnonce)this.DataContext).DeleteAnnonce();
+            ((ViewModelVille)this.DataContext).DeleteVille();
         }
     }
 }

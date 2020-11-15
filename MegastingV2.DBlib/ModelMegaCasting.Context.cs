@@ -34,5 +34,6 @@ namespace MegaCastingV2.DBlib
         public virtual DbSet<Professionnel> Professionnels { get; set; }
         public virtual DbSet<Statut> Statuts { get; set; }
         public virtual DbSet<Ville> Villes { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="MegaCastingV2.WPF.View.ViewProfil"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MegaCastingV2.WPF.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="PROFIL" FontWeight="Bold"/>
+        <Button Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Name="_ButtonSaveProfil" Click="_ButtonSaveProfil_Click"  Content="Sauvegarder" FontSize="12" Height="40"/>
+
+        <Label Grid.Row="2" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Mail :" Width="100" Height="40" />
+        <Label Grid.Row="2" Grid.Column="3" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="{Binding CurrentEmployee.Mail_EMP}" Width="100" Height="40" />
+
+        <Label Grid.Row="3" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Pass :" Width="100" Height="40" />
+        <Label Grid.Row="3" Grid.Column="3" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="{Binding CurrentEmployee.Pass_EMP}" Width="100" Height="40" />
+    </Grid>
+
+</UserControl>

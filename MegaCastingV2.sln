@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaCastingV2.DBlib", "Mega
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaCastingV2.WPF", "MegaCastingV2.WPF\MegaCastingV2.WPF.csproj", "{CF45E32A-FC4D-4D8E-B924-7BED27B273EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MegaCastingV2.DBLib.Tests", "MegaCastingV2.DBLib.Tests\MegaCastingV2.DBLib.Tests.csproj", "{0FCA280D-1EA2-495F-915F-03EB27599C2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +31,10 @@ Global
 		{CF45E32A-FC4D-4D8E-B924-7BED27B273EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF45E32A-FC4D-4D8E-B924-7BED27B273EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF45E32A-FC4D-4D8E-B924-7BED27B273EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FCA280D-1EA2-495F-915F-03EB27599C2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FCA280D-1EA2-495F-915F-03EB27599C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FCA280D-1EA2-495F-915F-03EB27599C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FCA280D-1EA2-495F-915F-03EB27599C2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

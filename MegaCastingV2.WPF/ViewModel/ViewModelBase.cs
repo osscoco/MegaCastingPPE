@@ -13,6 +13,15 @@ namespace MegaCastingV2.WPF.ViewModel
     /// </summary>
     public abstract class ViewModelBase
     {
+
+
+        private Employe _CurrentEmployee;
+
+        public Employe CurrentEmployee
+        {
+            get { return _CurrentEmployee; }
+            set { _CurrentEmployee = value; }
+        }
         #region Attributes
 
         /// <summary>

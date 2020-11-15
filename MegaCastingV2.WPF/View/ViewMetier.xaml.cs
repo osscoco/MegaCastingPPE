@@ -17,11 +17,11 @@ using System.Windows.Shapes;
 namespace MegaCastingV2.WPF.View
 {
     /// <summary>
-    /// Logique d'interaction pour ViewAnnonce.xaml
+    /// Logique d'interaction pour ViewMetier.xaml
     /// </summary>
-    public partial class ViewAnnonce : UserControl
+    public partial class ViewMetier : UserControl
     {
-        public ViewAnnonce()
+        public ViewMetier()
         {
             InitializeComponent();
         }
@@ -31,27 +31,27 @@ namespace MegaCastingV2.WPF.View
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _ButtonAddAnnonce_Click(object sender, RoutedEventArgs e)
+        private void _ButtonAddMetier_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelAnnonce)this.DataContext).AddAnnonce();
+            ((ViewModelMetier)this.DataContext).AddMetier();
         }
         // <summary>
         /// Défini le comportement lors du clic sur le bouton de sauvegarde
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _ButtonSaveAnnonce_Click(object sender, RoutedEventArgs e)
+        private void _ButtonSaveMetier_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelAnnonce)this.DataContext).Save(Libelle_TextBox.Text);
+            ((ViewModelMetier)this.DataContext).SaveChanges();
         }
         // <summary>
         /// Défini le comportement lors du clic sur le bouton de suppression
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _ButtonDeleteAnnonce_Click(object sender, RoutedEventArgs e)
+        private void _ButtonDeleteMetier_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelAnnonce)this.DataContext).DeleteAnnonce();
+            ((ViewModelMetier)this.DataContext).DeleteMetier();
         }
     }
 }

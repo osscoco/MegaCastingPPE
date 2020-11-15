@@ -1,0 +1,46 @@
+﻿<UserControl x:Class="MegaCastingV2.WPF.View.ViewVille"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:MegaCastingV2.WPF.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="100"/>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="VILLES"/>
+        <Button Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" FontSize="12" Name="_ButtonAddVille"  Click="_ButtonAddVille_Click" Content="Ajouter" Height="40" Width="100"/>
+        <Button Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Name="_ButtonSaveVille" Click="_ButtonSaveVille_Click"  Content="Sauvegarder" Visibility="{Binding SelectedVille, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Height="40" Width="100" FontSize="12" />
+        <Button Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="1" Name="_ButtonDeleteVille" Click="_ButtonDeleteVille_Click"  Content="Supprimer" Visibility="{Binding SelectedVille, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Height="40" Width="100" FontSize="12"/>
+
+        <Label Grid.Row="1" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Libellé :" Width="100" Height="40" />
+        <TextBox Name="Libelle_TextBox" Grid.Row="1" Grid.Column="3" Text="{Binding SelectedVille.Libellée_VILLE}" Visibility="{Binding SelectedVille, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+        
+        <ListBox 
+        Grid.Row="2"
+        Grid.RowSpan="5"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        x:Name="_ListBoxVille"
+        ItemsSource="{Binding Villes}"
+        DisplayMemberPath="Libellée_VILLE"
+        SelectedItem="{Binding SelectedVille}"
+            FontSize="12"
+        />
+    </Grid>
+</UserControl>

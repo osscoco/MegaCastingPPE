@@ -87,11 +87,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelMegaCasting.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Partial\Annonce.cs" />
+    <Compile Include="Partial\Contrat.cs" />
     <Compile Include="Professionnel.cs">
       <DependentUpon>ModelMegaCasting.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statut.cs">
+      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>ModelMegaCasting.tt</DependentUpon>
     </Compile>
     <Compile Include="Ville.cs">
@@ -124,6 +129,7 @@
       <LastGenOutput>ModelMegaCasting.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

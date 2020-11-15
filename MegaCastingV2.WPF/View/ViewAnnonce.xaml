@@ -9,52 +9,68 @@
     <Grid>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition  Width="200"/>
-            <ColumnDefinition />
-            <ColumnDefinition />
-            <ColumnDefinition />
+            <ColumnDefinition  Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
         </Grid.RowDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" FontSize="20" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="ANNONCES"/>
+        <Button Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" FontSize="12" Name="_ButtonAddAnnonce"  Click="_ButtonAddAnnonce_Click" Content="Ajouter" Height="40" Width="100"/>
+        <Button Grid.Row="0" Grid.Column="3"  Grid.ColumnSpan="1" FontSize="12" Name="_ButtonSaveAnnonce" Click="_ButtonSaveAnnonce_Click"  Content="Sauvegarder" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Height="40" Width="100"/>
+        <Button Grid.Row="0" Grid.Column="4"  Grid.ColumnSpan="1" FontSize="12" Name="_ButtonDeleteAnnonce" Click="_ButtonDeleteAnnonce_Click"  Content="Supprimer" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Height="40" Width="100" />
+
+        <Label Grid.Row="1" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Intitulé :"/>
+        <TextBox Name="Libelle_TextBox" Grid.Row="1" Grid.Column="3" Text="{Binding SelectedAnnonce.Intitulée_ANN}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+
+        <Label Grid.Row="2" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Date publication :" />
+        <DatePicker Name="Date_Pub_DatePicker" Grid.Row="2" Grid.Column="3" SelectedDate="{Binding SelectedAnnonce.Date_Pub_ANN}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+
+        <Label Grid.Row="3" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Date début :"/>
+        <DatePicker Name="Date_Deb_DatePicker" Grid.Row="3" Grid.Column="3" SelectedDate="{Binding SelectedAnnonce.Date_Deb_ANN}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+
+        <Label Grid.Row="4" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="*Date fin :"/>
+        <DatePicker Name="Date_Fin_DatePicker" Grid.Row="4" Grid.Column="3" SelectedDate="{Binding SelectedAnnonce.Date_Fin_ANN}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+
+        <Label Grid.Row="5" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Contrat :" />
+        <ComboBox Name="Contrat_ComboBox" Grid.Row="5" Grid.Column="3" ItemsSource="{Binding Contrats}" DisplayMemberPath="Libelle_Contrat" SelectedItem="{Binding SelectedAnnonce.Contrat}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+
+        <Label Grid.Row="6" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Professionnel :" />
+        <ComboBox Name="Professionnel_ComboBox" Grid.Row="6" Grid.Column="3" ItemsSource="{Binding Professionnels}" DisplayMemberPath="Nom_PRO" SelectedItem="{Binding SelectedAnnonce.Professionnel}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+
+        <Label Grid.Row="7" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Employé :" />
+        <ComboBox Name="Employé_ComboBox" Grid.Row="7" Grid.Column="3" ItemsSource="{Binding Employes}" DisplayMemberPath="Nom_EMP" SelectedItem="{Binding SelectedAnnonce.Employe}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+
+        <Label Grid.Row="8" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Ville :" />
+        <ComboBox Name="Ville_ComboBox" Grid.Row="8" Grid.Column="3" ItemsSource="{Binding Villes}" DisplayMemberPath="Libellée_VILLE" SelectedItem="{Binding SelectedAnnonce.Ville}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+
+        <Label Grid.Row="9" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Métier :" />
+        <ComboBox Name="Metier_ComboBox" Grid.Row="9" Grid.Column="3" ItemsSource="{Binding Metiers}" DisplayMemberPath="Libellée_Metier" SelectedItem="{Binding SelectedAnnonce.Metier}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+
 
         <ListBox 
         Grid.Row="2" 
+        Grid.Column="0"
+        Grid.RowSpan="6"
+        Grid.ColumnSpan="2"
         x:Name="_ListBoxAnnonce"
         ItemsSource="{Binding Annonces}"
-        DisplayMemberPath="Libelle_Annonce"
-        SelectedItem="{Binding SelectedAnnonce}" Margin="10,112,0,60.6" HorizontalAlignment="Left" Width="180"      />
-
-        <Button Grid.Column="1" Grid.Row="2" Name="_ButtonAddAnnonce"  Click="_ButtonAddAnnonce_Click" Content="Ajouter" Margin="0,0,0,407.6" Height="Auto" />
-        <Label Grid.Row="2" Margin="14,28,10,352.6" FontSize="30" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="ANNONCES" Height="auto" Width="auto"/>
-
-        <Label Grid.Row="2" Margin="0,55,1,370.6" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="INTITULEE :" Grid.Column="1" />
-        <TextBox Grid.Column="2" Grid.Row="2" Text="{Binding SelectedAnnonce.Intitulée_ANN}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Margin="0,55,0,370.6" Grid.ColumnSpan="2" FontSize="20"/>
-
-        <Label Grid.Row="2" Margin="0,90,1,334.6" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="DATE PUBLICATION :" Grid.Column="1" />
-        <DatePicker Grid.Column="2" Grid.Row="2" Text="{Binding SelectedAnnonce.Date_Pub_ANN}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Margin="0,90,0,334.6" Grid.ColumnSpan="2" FontSize="20" Height="25"/>
-
-        <Label Grid.Row="2" Margin="0,130,1,295.6" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="DATE DEBUT :" Grid.Column="1" />
-        <DatePicker Grid.Column="2" Grid.Row="2" Text="{Binding SelectedAnnonce.Date_Deb_ANN}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Margin="0,130,0,295.6" Grid.ColumnSpan="2" FontSize="20" Height="24"/>
-
-        <Label Grid.Row="2" Margin="0,171,1,254.6" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="*DATE FIN :" Grid.Column="1" />
-        <DatePicker Grid.Column="2" Grid.Row="2" Text="{Binding SelectedAnnonce.Date_Fin_ANN}" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Margin="0,171,0,254.6" Grid.ColumnSpan="2" FontSize="20" Height="24"/>
-
-        <Label Grid.Row="2" Margin="0,214,1,211.6" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="CONTRAT :" Grid.Column="1" />
-        <ComboBox Grid.Column="2" Grid.Row="2" SelectedItem="{Binding SelectedContrat.Libelle_Contrat}" Visibility="{Binding SelectedContrat, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Margin="0,214,0,211.6" Grid.ColumnSpan="2" FontSize="20" Height="24"/>
-
-        <Label Grid.Row="2" Margin="0,256,1,169.6" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="PROFESSIONNEL :" Grid.Column="1" />
-        <ComboBox Grid.Column="2" Grid.Row="2" SelectedItem="{Binding SelectedProfessionnel.Nom_PRO}" Visibility="{Binding SelectedProfessionnel, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Margin="0,256,0,169.6" Grid.ColumnSpan="2" FontSize="20" Height="24"/>
-
-        <Label Grid.Row="2" Margin="0,297,1,128.6" FontSize="15" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="EMPLOYE :" Grid.Column="1" />
-        <ComboBox Grid.Column="2" Grid.Row="2" SelectedItem="{Binding SelectedEmploye.Nom_EMP}" Visibility="{Binding SelectedEmploye, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Margin="0,297,0,128.6" Grid.ColumnSpan="2" FontSize="20" Height="24"/>
-
-
-        <Button Grid.Column="2" Grid.Row="2" Name="_ButtonSaveAnnonce" Click="_ButtonSaveAnnonce_Click"  Content="Sauvegarder" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Margin="0,0,0,407.6" Height="Auto" />
-        <Button Grid.Column="3" Grid.Row="2" Name="_ButtonDeleteAnnonce" Click="_ButtonDeleteAnnonce_Click"  Content="Supprimer" Visibility="{Binding SelectedAnnonce, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Margin="0,0,0,407.6" Height="Auto" />
-
+        DisplayMemberPath="Intitulée_ANN" 
+        SelectedItem="{Binding SelectedAnnonce}" FontSize="12"/>
+        
     </Grid>
 </UserControl>

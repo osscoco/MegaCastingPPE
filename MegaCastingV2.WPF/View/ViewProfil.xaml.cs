@@ -17,41 +17,32 @@ using System.Windows.Shapes;
 namespace MegaCastingV2.WPF.View
 {
     /// <summary>
-    /// Logique d'interaction pour ViewAnnonce.xaml
+    /// Logique d'interaction pour ViewProfil.xaml
     /// </summary>
-    public partial class ViewAnnonce : UserControl
+    public partial class ViewProfil : UserControl
     {
-        public ViewAnnonce()
+        public ViewProfil()
         {
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Défini le comportement lors du clic sur le bouton d'ajout
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void _ButtonAddAnnonce_Click(object sender, RoutedEventArgs e)
-        {
-            ((ViewModelAnnonce)this.DataContext).AddAnnonce();
-        }
         // <summary>
         /// Défini le comportement lors du clic sur le bouton de sauvegarde
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _ButtonSaveAnnonce_Click(object sender, RoutedEventArgs e)
+        private void _ButtonSaveProfil_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelAnnonce)this.DataContext).Save(Libelle_TextBox.Text);
+            ((ViewModelEmploye)this.DataContext).SaveChanges();
         }
         // <summary>
         /// Défini le comportement lors du clic sur le bouton de suppression
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _ButtonDeleteAnnonce_Click(object sender, RoutedEventArgs e)
+        private void _ButtonDeleteProfil_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelAnnonce)this.DataContext).DeleteAnnonce();
+            ((ViewModelEmploye)this.DataContext).DeleteProfil();
         }
     }
 }

@@ -26,7 +26,6 @@ namespace MegaCastingV2.WPF.View
             InitializeComponent();
         }
 
-
         /// <summary>
         /// Défini le comportement lors du clic sur le bouton d'ajout
         /// </summary>
@@ -36,12 +35,20 @@ namespace MegaCastingV2.WPF.View
         {
             ((ViewModelContrat)this.DataContext).AddContrat();
         }
-
+        // <summary>
+        /// Défini le comportement lors du clic sur le bouton de sauvegarde
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ButtonSaveContrat_Click(object sender, RoutedEventArgs e)
         {
             ((ViewModelContrat)this.DataContext).SaveChangesVerifySauvegarde();
         }
-
+        // <summary>
+        /// Défini le comportement lors du clic sur le bouton de suppression
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ButtonDeleteContrat_Click(object sender, RoutedEventArgs e)
         {
             ((ViewModelContrat)this.DataContext).DeleteContrat();

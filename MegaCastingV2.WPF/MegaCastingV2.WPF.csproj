@@ -17,7 +17,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <TargetFrameworkProfile />
+    <AppConfig>App.$(Configuration).config</AppConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -79,7 +79,11 @@
     <Compile Include="ViewModel\ViewModelAnnonce.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
     <Compile Include="ViewModel\ViewModelContrat.cs" />
+    <Compile Include="ViewModel\ViewModelEmploye.cs" />
     <Compile Include="ViewModel\ViewModelMainWindow.cs" />
+    <Compile Include="ViewModel\ViewModelMetier.cs" />
+    <Compile Include="ViewModel\ViewModelProfessionnel.cs" />
+    <Compile Include="ViewModel\ViewModelVille.cs" />
     <Compile Include="View\ViewAnnonce.xaml.cs">
       <DependentUpon>ViewAnnonce.xaml</DependentUpon>
     </Compile>
@@ -88,6 +92,15 @@
     </Compile>
     <Compile Include="View\ViewMain.xaml.cs">
       <DependentUpon>ViewMain.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewMetier.xaml.cs">
+      <DependentUpon>ViewMetier.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewProfil.xaml.cs">
+      <DependentUpon>ViewProfil.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewVille.xaml.cs">
+      <DependentUpon>ViewVille.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -117,6 +130,18 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ViewMetier.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewProfil.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ViewVille.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -136,6 +161,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="App.Debug.config" />
+    <None Include="App.Release.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

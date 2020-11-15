@@ -4,13 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MegacastingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="MegacastingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Annonce">
           <Key>
             <PropertyRef Name="ID_ANN" />
           </Key>
           <Property Name="ID_ANN" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Intitulée_ANN" Type="nchar" MaxLength="125" Nullable="false" />
+          <Property Name="Intitulée_ANN" Type="nvarchar" MaxLength="125" Nullable="false" />
           <Property Name="Date_Pub_ANN" Type="date" Nullable="false" />
           <Property Name="Date_Deb_ANN" Type="date" Nullable="false" />
           <Property Name="Date_Fin_ANN" Type="date" />
@@ -25,20 +25,20 @@
             <PropertyRef Name="ID_ART" />
           </Key>
           <Property Name="ID_ART" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Prenom_ART" Type="nchar" MaxLength="20" Nullable="false" />
-          <Property Name="Nom_ART" Type="nchar" MaxLength="20" Nullable="false" />
+          <Property Name="Prenom_ART" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom_ART" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date_Nai_ART" Type="date" Nullable="false" />
-          <Property Name="Mail_ART" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Pass_ART" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="Mail_ART" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pass_ART" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Candidature">
           <Key>
             <PropertyRef Name="ID_CAND" />
           </Key>
           <Property Name="ID_CAND" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Objet_CAND" Type="nchar" MaxLength="255" Nullable="false" />
-          <Property Name="Date_Pub_CAND" Type="nchar" MaxLength="255" Nullable="false" />
-          <Property Name="Description_CAND" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="Objet_CAND" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Date_Pub_CAND" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Description_CAND" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="IdAnnonce" Type="int" Nullable="false" />
           <Property Name="IdArtiste" Type="int" Nullable="false" />
           <Property Name="IdStatut" Type="int" Nullable="false" />
@@ -48,48 +48,58 @@
             <PropertyRef Name="ID_Contrat" />
           </Key>
           <Property Name="ID_Contrat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Libelle_Contrat" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Libelle_Contrat" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Employe">
           <Key>
             <PropertyRef Name="ID_EMP" />
           </Key>
           <Property Name="ID_EMP" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Prenom_EMP" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Nom_EMP" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Mail_EMP" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Pass_EMP" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="Prenom_EMP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom_EMP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mail_EMP" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pass_EMP" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Metier">
           <Key>
             <PropertyRef Name="ID_Metier" />
           </Key>
           <Property Name="ID_Metier" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Libellée_Metier" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Libellée_Metier" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Professionnel">
           <Key>
             <PropertyRef Name="ID_PRO" />
           </Key>
           <Property Name="ID_PRO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Prenom_PRO" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Nom_PRO" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Mail_PRO" Type="nchar" MaxLength="50" Nullable="false" />
-          <Property Name="Pass_PRO" Type="nchar" MaxLength="255" Nullable="false" />
+          <Property Name="Prenom_PRO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nom_PRO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Mail_PRO" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Pass_PRO" Type="nvarchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Statut">
           <Key>
             <PropertyRef Name="ID_Statut" />
           </Key>
           <Property Name="ID_Statut" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Libellée_Statut" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Libellée_Statut" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="Ville">
           <Key>
             <PropertyRef Name="ID_Ville" />
           </Key>
           <Property Name="ID_Ville" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Libellée_VILLE" Type="nchar" MaxLength="50" Nullable="false" />
+          <Property Name="Libellée_VILLE" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <Association Name="FK_Annonce_Contrat">
           <End Role="Contrat" Type="Self.Contrat" Multiplicity="1" />
@@ -196,6 +206,7 @@
           <EntitySet Name="Metier" EntityType="Self.Metier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Professionnel" EntityType="Self.Professionnel" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Statut" EntityType="Self.Statut" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Ville" EntityType="Self.Ville" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Annonce_Contrat" Association="Self.FK_Annonce_Contrat">
             <End Role="Contrat" EntitySet="Contrat" />
@@ -230,8 +241,7 @@
             <End Role="Candidature" EntitySet="Candidature" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MegacastingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -240,7 +250,7 @@
             <PropertyRef Name="ID_ANN" />
           </Key>
           <Property Name="ID_ANN" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Intitulée_ANN" Type="String" MaxLength="125" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Intitulée_ANN" Type="String" MaxLength="125" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date_Pub_ANN" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Date_Deb_ANN" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Date_Fin_ANN" Type="DateTime" Precision="0" />
@@ -261,11 +271,11 @@
             <PropertyRef Name="ID_ART" />
           </Key>
           <Property Name="ID_ART" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Prenom_ART" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Nom_ART" Type="String" MaxLength="20" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Prenom_ART" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nom_ART" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Date_Nai_ART" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Mail_ART" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Pass_ART" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Mail_ART" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pass_ART" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Candidatures" Relationship="Self.FK_Candidature_Artiste" FromRole="Artiste" ToRole="Candidature" />
         </EntityType>
         <EntityType Name="Candidature">
@@ -273,9 +283,9 @@
             <PropertyRef Name="ID_CAND" />
           </Key>
           <Property Name="ID_CAND" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Objet_CAND" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Date_Pub_CAND" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Description_CAND" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Objet_CAND" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date_Pub_CAND" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description_CAND" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="IdAnnonce" Type="Int32" Nullable="false" />
           <Property Name="IdArtiste" Type="Int32" Nullable="false" />
           <Property Name="IdStatut" Type="Int32" Nullable="false" />
@@ -288,7 +298,7 @@
             <PropertyRef Name="ID_Contrat" />
           </Key>
           <Property Name="ID_Contrat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Libelle_Contrat" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Libelle_Contrat" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Contrat" FromRole="Contrat" ToRole="Annonce" />
         </EntityType>
         <EntityType Name="Employe">
@@ -296,10 +306,10 @@
             <PropertyRef Name="ID_EMP" />
           </Key>
           <Property Name="ID_EMP" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Prenom_EMP" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Nom_EMP" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Mail_EMP" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Pass_EMP" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Prenom_EMP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nom_EMP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail_EMP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pass_EMP" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Employe" FromRole="Employe" ToRole="Annonce" />
         </EntityType>
         <EntityType Name="Metier">
@@ -307,7 +317,7 @@
             <PropertyRef Name="ID_Metier" />
           </Key>
           <Property Name="ID_Metier" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Libellée_Metier" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Libellée_Metier" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Metier" FromRole="Metier" ToRole="Annonce" />
         </EntityType>
         <EntityType Name="Professionnel">
@@ -315,10 +325,10 @@
             <PropertyRef Name="ID_PRO" />
           </Key>
           <Property Name="ID_PRO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Prenom_PRO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Nom_PRO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Mail_PRO" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="Pass_PRO" Type="String" MaxLength="255" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Prenom_PRO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Nom_PRO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Mail_PRO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Pass_PRO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Professionnel" FromRole="Professionnel" ToRole="Annonce" />
         </EntityType>
         <EntityType Name="Statut">
@@ -326,7 +336,7 @@
             <PropertyRef Name="ID_Statut" />
           </Key>
           <Property Name="ID_Statut" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Libellée_Statut" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Libellée_Statut" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Candidatures" Relationship="Self.FK_Candidature_Statut" FromRole="Statut" ToRole="Candidature" />
         </EntityType>
         <EntityType Name="Ville">
@@ -334,7 +344,7 @@
             <PropertyRef Name="ID_Ville" />
           </Key>
           <Property Name="ID_Ville" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Libellée_VILLE" Type="String" MaxLength="50" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Libellée_VILLE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Annonces" Relationship="Self.FK_Annonce_Ville" FromRole="Ville" ToRole="Annonce" />
         </EntityType>
         <Association Name="FK_Annonce_Contrat">
@@ -475,7 +485,18 @@
             <End Role="Statut" EntitySet="Statuts" />
             <End Role="Candidature" EntitySet="Candidatures" />
           </AssociationSet>
+          <EntitySet Name="sysdiagrams" EntityType="MegacastingModel.sysdiagram" />
         </EntityContainer>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -574,6 +595,17 @@
               <MappingFragment StoreEntitySet="Ville">
                 <ScalarProperty Name="ID_Ville" ColumnName="ID_Ville" />
                 <ScalarProperty Name="Libellée_VILLE" ColumnName="Libellée_VILLE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="MegacastingModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

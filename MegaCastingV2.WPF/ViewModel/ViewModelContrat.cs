@@ -21,7 +21,7 @@ namespace MegaCastingV2.WPF.ViewModel
         private ObservableCollection<Contrat> _Contrats;
 
         /// <summary>
-        /// Type de contrat sélectionné
+        /// Contrat sélectionné
         /// </summary>
         private Contrat _SelectedContrat;
 
@@ -40,7 +40,7 @@ namespace MegaCastingV2.WPF.ViewModel
         }
 
         /// <summary>
-        /// Obtient ou défini le type de contrat sélectionné
+        /// Obtient ou défini le contrat sélectionné
         /// </summary>
         public Contrat SelectedContrat
         {
@@ -51,12 +51,15 @@ namespace MegaCastingV2.WPF.ViewModel
         #endregion
 
         #region Constructor
-
+        /// <summary>
+        /// Permet de lister les contrats dans la vue
+        /// </summary>
+        /// <param name="entities"></param>
         public ViewModelContrat(MegaCastingEntities entities)
             :base(entities)
         {
             this.Entities.Contrats.ToList();
-            this.Contrats = this.Entities.Contrats.Local;
+            this.Contrats = this.Entities.Contrats.Local;//Fullname et ToString
         }
 
         #endregion
@@ -68,16 +71,16 @@ namespace MegaCastingV2.WPF.ViewModel
         /// </summary>
         public void SaveChangesVerifySauvegarde()
         {
-            if(!this.Entities.Contrats
-                .Any(contrat => contrat.ID_Contrat == 0 && contrat.Libelle_Contrat == SelectedContrat.Libelle_Contrat && SelectedContrat.ID_Contrat != contrat.ID_Contrat)
-                )//Si un Id_Contrat est différent de 0 et un Libelle_Contrat est différent de Libelle_Selected et Si un Id Contrat est différent de Id Selected au moment (Au moment de modifier)
-            {
+            //if(!this.Entities.Contrats
+                //.Any(contrat => contrat.ID_Contrat == 0 && contrat.Libelle_Contrat == SelectedContrat.Libelle_Contrat && SelectedContrat.ID_Contrat != contrat.ID_Contrat)
+                //)//Si un Id_Contrat est différent de 0 et un Libelle_Contrat est différent de Libelle_Selected et Si un Id Contrat est différent de Id Selected au moment (Au moment de modifier)
+            //{
                 this.Entities.SaveChanges();
-              }
-              else
-              {
-                MessageBox.Show("Vous avez déjà un contrat de ce nom !");
-              }
+             // }
+             // else
+              //{
+                //MessageBox.Show("Vous avez déjà un contrat de ce nom !");
+              //}
         }
 
         public void SaveChanges()
@@ -88,7 +91,7 @@ namespace MegaCastingV2.WPF.ViewModel
 
 
         /// <summary>
-        /// Ajoute un nouveau type de contrat
+        /// Ajoute un nouveau contrat
         /// </summary>
         public void AddContrat()
         {
@@ -100,7 +103,6 @@ namespace MegaCastingV2.WPF.ViewModel
                 contrat.Libelle_Contrat = "Nouveau";
                 this.Contrats.Add(contrat);
                 this.SaveChanges();
-                this._SelectedContrat = contrat;
             }
         }
         
@@ -109,8 +111,6 @@ namespace MegaCastingV2.WPF.ViewModel
         /// </summary>
         public void DeleteContrat()
         {
-            // Vérification si on a le droit de supprimer
-
             //Suppression de l'élément
             this.Contrats.Remove(SelectedContrat);
             this.SaveChanges();
