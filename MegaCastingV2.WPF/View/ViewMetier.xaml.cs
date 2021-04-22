@@ -21,6 +21,9 @@ namespace MegaCastingV2.WPF.View
     /// </summary>
     public partial class ViewMetier : UserControl
     {
+        /// <summary>
+        /// Initialise la vue du métier
+        /// </summary>
         public ViewMetier()
         {
             InitializeComponent();
@@ -35,7 +38,7 @@ namespace MegaCastingV2.WPF.View
         {
             ((ViewModelMetier)this.DataContext).AddMetier();
         }
-        // <summary>
+        /// <summary>
         /// Défini le comportement lors du clic sur le bouton de sauvegarde
         /// </summary>
         /// <param name="sender"></param>
@@ -44,7 +47,7 @@ namespace MegaCastingV2.WPF.View
         {
             ((ViewModelMetier)this.DataContext).SaveChanges();
         }
-        // <summary>
+        /// <summary>
         /// Défini le comportement lors du clic sur le bouton de suppression
         /// </summary>
         /// <param name="sender"></param>

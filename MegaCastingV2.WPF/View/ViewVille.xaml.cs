@@ -21,6 +21,9 @@ namespace MegaCastingV2.WPF.View
     /// </summary>
     public partial class ViewVille : UserControl
     {
+        /// <summary>
+        /// Initialise la vue de la ville
+        /// </summary>
         public ViewVille()
         {
             InitializeComponent();
@@ -35,7 +38,7 @@ namespace MegaCastingV2.WPF.View
         {
             ((ViewModelVille)this.DataContext).AddVille();
         }
-        // <summary>
+        /// <summary>
         /// Défini le comportement lors du clic sur le bouton de sauvegarde
         /// </summary>
         /// <param name="sender"></param>
@@ -44,7 +47,7 @@ namespace MegaCastingV2.WPF.View
         {
             ((ViewModelVille)this.DataContext).SaveChanges();
         }
-        // <summary>
+        /// <summary>
         /// Défini le comportement lors du clic sur le bouton de suppression
         /// </summary>
         /// <param name="sender"></param>

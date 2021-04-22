@@ -14,9 +14,14 @@ namespace MegaCastingV2.WPF.ViewModel
     public abstract class ViewModelBase
     {
 
-
+        /// <summary>
+        /// Employé actuellement connecté
+        /// </summary>
         private Employe _CurrentEmployee;
 
+        /// <summary>
+        /// Obtient ou défini l'employé actuellement connecté
+        /// </summary>
         public Employe CurrentEmployee
         {
             get { return _CurrentEmployee; }
@@ -27,7 +32,7 @@ namespace MegaCastingV2.WPF.ViewModel
         /// <summary>
         /// Contexte de l'application
         /// </summary>
-        private MegaCastingEntities _Entities;
+        private MegacastingEntities _Entities;
 
         #endregion
 
@@ -36,7 +41,7 @@ namespace MegaCastingV2.WPF.ViewModel
         /// <summary>
         /// Obtient ou défini le contexte de l'application
         /// </summary>
-        public MegaCastingEntities Entities
+        public MegacastingEntities Entities
         {
             get { return _Entities; }
             set { _Entities = value; }
@@ -50,7 +55,7 @@ namespace MegaCastingV2.WPF.ViewModel
         /// Constructeur du modèle-vue de la fenêtre principale
         /// </summary>
         /// <param name="entities">Contexte de l'application</param>
-        public ViewModelBase(MegaCastingEntities entities)
+        public ViewModelBase(MegacastingEntities entities)
         {
             this.Entities = entities;
         }

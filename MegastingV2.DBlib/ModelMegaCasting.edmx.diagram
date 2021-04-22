@@ -4,15 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="096c6f3906d64e29a5fca26a4cdf3170" Name="Diagram1">
+      <Diagram DiagramId="b32d04018ba44d5eb99e81cc122c27c3" Name="Diagram1">
         <EntityTypeShape EntityType="MegacastingModel.Annonce" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegacastingModel.Artiste" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegacastingModel.Candidature" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegacastingModel.Contrat" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegacastingModel.Employe" Width="1.5" PointX="0.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegacastingModel.Metier" Width="1.5" PointX="0.75" PointY="8.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegacastingModel.Professionnel" Width="1.5" PointX="0.75" PointY="11.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MegacastingModel.Statut" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegacastingModel.Artiste" Width="1.5" PointX="3" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegacastingModel.Candidature" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegacastingModel.Contrat" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegacastingModel.Employe" Width="1.5" PointX="0.75" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegacastingModel.Metier" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegacastingModel.Professionnel" Width="1.5" PointX="0.75" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MegacastingModel.Statut" Width="1.5" PointX="3" PointY="10" IsExpanded="true" />
         <EntityTypeShape EntityType="MegacastingModel.Ville" Width="1.5" PointX="0.75" PointY="14.25" IsExpanded="true" />
         <AssociationConnector Association="MegacastingModel.FK_Annonce_Contrat" ManuallyRouted="false" />
         <AssociationConnector Association="MegacastingModel.FK_Annonce_Employe" ManuallyRouted="false" />
@@ -22,7 +22,6 @@
         <AssociationConnector Association="MegacastingModel.FK_Candidature_Annonce" ManuallyRouted="false" />
         <AssociationConnector Association="MegacastingModel.FK_Candidature_Artiste" ManuallyRouted="false" />
         <AssociationConnector Association="MegacastingModel.FK_Candidature_Statut" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="MegacastingModel.sysdiagram" Width="1.5" PointX="5.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

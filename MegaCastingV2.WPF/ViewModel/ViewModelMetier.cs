@@ -5,20 +5,25 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Data;
 
 namespace MegaCastingV2.WPF.ViewModel
 {
+    /// <summary>
+    /// Modèle du Métier héritant du Modèle Base
+    /// </summary>
     public class ViewModelMetier : ViewModelBase
     {
         #region Attributes
 
         /// <summary>
-        /// Collection de Ville
+        /// Collection de Métiers
         /// </summary>
         private ObservableCollection<Metier> _Metiers;
 
         /// <summary>
-        /// Ville sélectionnée
+        /// Metier sélectionné
         /// </summary>
         private Metier _SelectedMetier;
 
@@ -28,7 +33,7 @@ namespace MegaCastingV2.WPF.ViewModel
 
 
         /// <summary>
-        /// Obtient ou défini la collection de villes
+        /// Obtient ou défini la collection de métiers
         /// </summary>
         public ObservableCollection<Metier> Metiers
         {
@@ -37,7 +42,7 @@ namespace MegaCastingV2.WPF.ViewModel
         }
 
         /// <summary>
-        /// Obtient ou défini la ville sélectionné
+        /// Obtient ou défini le métier sélectionné
         /// </summary>
         public Metier SelectedMetier
         {
@@ -49,69 +54,62 @@ namespace MegaCastingV2.WPF.ViewModel
 
         #region Constructor
         /// <summary>
-        /// Permet de lister les villes dans la vue
+        /// Permet de lister les métiers dans la vue
         /// </summary>
         /// <param name="entities"></param>
-        public ViewModelMetier(MegaCastingEntities entities)
+        public ViewModelMetier(MegacastingEntities entities)
             : base(entities)
         {
-            this.Entities.Metiers.ToList();
-            this.Metiers = this.Entities.Metiers.Local;
+            this.Entities.Metier.ToList();
+            this.Metiers = this.Entities.Metier.Local;
         }
 
         #endregion
 
 
         #region Methods
-
         /// <summary>
-        /// Sauvegarde les modifications
+        /// Sauvegarde les modifications lors de l'ajout d'un nouveau métier
         /// </summary>
-        public void SaveChangesVerifySauvegarde()
-        {
-            //if(!this.Entities.Contrats
-            //.Any(contrat => contrat.ID_Contrat == 0 && contrat.Libelle_Contrat == SelectedContrat.Libelle_Contrat && SelectedContrat.ID_Contrat != contrat.ID_Contrat)
-            //)//Si un Id_Contrat est différent de 0 et un Libelle_Contrat est différent de Libelle_Selected et Si un Id Contrat est différent de Id Selected au moment (Au moment de modifier)
-            //{
-            this.Entities.SaveChanges();
-            // }
-            // else
-            //{
-            //MessageBox.Show("Vous avez déjà une ville de ce nom !");
-            //}
-        }
-
         public void SaveChanges()
         {
             this.Entities.SaveChanges();
+            Entities.ChangeTracker.Entries().Where(type => type.State == System.Data.Entity.EntityState.Modified).ToList().ForEach(type => type.Reload());
+            CollectionViewSource.GetDefaultView(Metiers).Refresh();
         }
 
 
 
         /// <summary>
-        /// Ajoute une nouvelle ville
+        /// Ajoute une nouveau métier
         /// </summary>
         public void AddMetier()
         {
-            if (!this.Entities.Metiers
-                .Any(type => type.Libellée_Metier == "Nouveau")//Si dans la liste de villes il n'existe pas d'élément "Nouveau"
+            if (!this.Entities.Metier
+                .Any(type => type.Nom == "Nouveau")//Si dans la liste de métiers il n'existe pas d'élément "Nouveau"
                 )
             {
                 Metier metier = new Metier();
-                metier.Libellée_Metier = "Nouveau";
+                metier.Nom = "Nouveau";
                 this.Metiers.Add(metier);
                 this.SaveChanges();
             }
         }
 
         /// <summary>
-        /// Supprime la ville sélectionnée
+        /// Supprime le métier sélectionné
         /// </summary>
         public void DeleteMetier()
         {
-            //Suppression de l'élément
-            this.Metiers.Remove(SelectedMetier);
-            this.SaveChanges();
+            if (!SelectedMetier.Annonce.Any())
+            {
+                //Suppression de l'élément
+                this.Metiers.Remove(SelectedMetier);
+                this.SaveChanges();
+            }else
+            {
+                MessageBox.Show("Ce métier ne peux pas être supprimé car il est déjà lié à une annonce !");
+            }
         }
 
 

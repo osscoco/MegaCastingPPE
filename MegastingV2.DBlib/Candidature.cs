@@ -14,10 +14,10 @@ namespace MegaCastingV2.DBlib
     
     public partial class Candidature
     {
-        public int ID_CAND { get; set; }
-        public string Objet_CAND { get; set; }
-        public string Date_Pub_CAND { get; set; }
-        public string Description_CAND { get; set; }
+        public int Id { get; set; }
+        public string Objet { get; set; }
+        public string Date_Publication { get; set; }
+        public string Description { get; set; }
         public int IdAnnonce { get; set; }
         public int IdArtiste { get; set; }
         public int IdStatut { get; set; }

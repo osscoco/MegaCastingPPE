@@ -28,7 +28,7 @@ namespace MegaCastingV2.WPF
         /// <summary>
         /// Contexte de l'application
         /// </summary>
-        private MegaCastingEntities _Entities;
+        private MegacastingEntities _Entities;
 
         /// <summary>
         /// Vue Modèle de la fenêtre principale
@@ -42,7 +42,7 @@ namespace MegaCastingV2.WPF
         /// <summary>
         /// Obtient ou défini le contexte de l'application
         /// </summary>
-        public MegaCastingEntities Entities
+        public MegacastingEntities Entities
         {
             get { return _Entities; }
             set { _Entities = value; }
@@ -68,7 +68,7 @@ namespace MegaCastingV2.WPF
         public MainWindow()
         {
             InitializeComponent();
-            this.Entities = new MegaCastingEntities();
+            this.Entities = new MegacastingEntities();
             this.ViewModel = new ViewModelMainWindow(this.Entities);
 
 #if DEBUG
@@ -82,7 +82,7 @@ namespace MegaCastingV2.WPF
         #endregion
 
         /// <summary>
-        /// Défini le dockPanel comme affichant le type d'annonce
+        /// Défini le dockPanel comme affichant les annonces
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -101,7 +101,7 @@ namespace MegaCastingV2.WPF
 
        
         /// <summary>
-        /// Défini le dockPanel comme affichant le type de contrat
+        /// Défini le dockPanel comme affichant les contrats
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -119,7 +119,7 @@ namespace MegaCastingV2.WPF
         }
 
         /// <summary>
-        /// Défini le dockPanel comme affichant le type de contrat
+        /// Défini le dockPanel comme affichant les villes
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -137,7 +137,7 @@ namespace MegaCastingV2.WPF
         }
 
         /// <summary>
-        /// Défini le dockPanel comme affichant le type de contrat
+        /// Défini le dockPanel comme affichant les métiers
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -154,30 +154,38 @@ namespace MegaCastingV2.WPF
 
         }
 
+        /// <summary>
+        /// Défini le dockPanel comme affichant le profil
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonManageProfil_Click(object sender, RoutedEventArgs e)
         {
             this.DockPanelView.Children.Clear();
 
-            ViewModelEmploye viewModel = new ViewModelEmploye(Entities);
-            viewModel.CurrentEmployee = this.ViewModel.CurrentEmployee;
+            ViewModelProfessionnel viewModel = new ViewModelProfessionnel(Entities);
             ViewProfil view = new ViewProfil();
             view.DataContext = viewModel;
 
             this.DockPanelView.Children.Add(view);
         }
 
+        /// <summary>
+        /// Défini le dockPanel comme connexion de l'employé
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void _ButtonConnect_Click(object sender, RoutedEventArgs e)
         {
-            this.ViewModel.CurrentEmployee = this.Entities.Employes
-                .FirstOrDefault(employee => employee.Mail_EMP == _TextBoxId.Text && employee.Pass_EMP == _TextBoxPassWord.Password);
+            this.ViewModel.CurrentEmployee = this.Entities.Employe
+                .FirstOrDefault(employee => employee.Mail == _TextBoxId.Text && employee.Password == _TextBoxPassWord.Password);
 
             if (this.ViewModel.CurrentEmployee == null)
             {
                 _TextBoxId.Text = "";
                 _TextBoxPassWord.Password = "";
                 _LabelErrorMessage.Visibility = Visibility.Visible;
-                
-
+             
             }
             else
             {
@@ -185,15 +193,20 @@ namespace MegaCastingV2.WPF
                
             }
 
-
-
         }
 
+        /// <summary>
+        /// Défini le dockPanel comme déconnexion de l'employé
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ButtonManageQuit_Click(object sender, RoutedEventArgs e)
         {
             _TextBoxId.Text = "";
             _TextBoxPassWord.Password = "";
             _GridAuthentication.Visibility = Visibility.Visible;
+            _LabelErrorMessage.Visibility = Visibility.Hidden;
         }
+
     }
 }

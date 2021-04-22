@@ -7,10 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Forms.VisualStyles;
 
 namespace MegaCastingV2.WPF.ViewModel
 {
+    /// <summary>
+    /// Modèle du Contrat héritant du Modèle Base
+    /// </summary>
     public class ViewModelContrat : ViewModelBase
     {
         #region Attributes
@@ -55,37 +59,24 @@ namespace MegaCastingV2.WPF.ViewModel
         /// Permet de lister les contrats dans la vue
         /// </summary>
         /// <param name="entities"></param>
-        public ViewModelContrat(MegaCastingEntities entities)
+        public ViewModelContrat(MegacastingEntities entities)
             :base(entities)
         {
-            this.Entities.Contrats.ToList();
-            this.Contrats = this.Entities.Contrats.Local;//Fullname et ToString
+            this.Entities.Contrat.ToList();
+            this.Contrats = this.Entities.Contrat.Local;//Fullname et ToString
         }
 
         #endregion
 
         #region Methods
-
         /// <summary>
-        /// Sauvegarde les modifications
+        /// Sauvegarde les modifications lors de l'ajout d'un nouveau contrat
         /// </summary>
-        public void SaveChangesVerifySauvegarde()
-        {
-            //if(!this.Entities.Contrats
-                //.Any(contrat => contrat.ID_Contrat == 0 && contrat.Libelle_Contrat == SelectedContrat.Libelle_Contrat && SelectedContrat.ID_Contrat != contrat.ID_Contrat)
-                //)//Si un Id_Contrat est différent de 0 et un Libelle_Contrat est différent de Libelle_Selected et Si un Id Contrat est différent de Id Selected au moment (Au moment de modifier)
-            //{
-                this.Entities.SaveChanges();
-             // }
-             // else
-              //{
-                //MessageBox.Show("Vous avez déjà un contrat de ce nom !");
-              //}
-        }
-
         public void SaveChanges()
         {
             this.Entities.SaveChanges();
+            Entities.ChangeTracker.Entries().Where(type => type.State == System.Data.Entity.EntityState.Modified).ToList().ForEach(type => type.Reload());
+            CollectionViewSource.GetDefaultView(Contrats).Refresh();
         }
 
 
@@ -95,28 +86,34 @@ namespace MegaCastingV2.WPF.ViewModel
         /// </summary>
         public void AddContrat()
         {
-            if (!this.Entities.Contrats
-                .Any(type => type.Libelle_Contrat == "Nouveau")//Si dans la liste de contrats il n'existe pas d'élément "Nouveau"
+            if (!this.Entities.Contrat
+                .Any(type => type.Nom == "Nouveau")//Si dans la liste de contrats il n'existe pas d'élément "Nouveau"
                 )
             {
                 Contrat contrat = new Contrat();
-                contrat.Libelle_Contrat = "Nouveau";
+                contrat.Nom = "Nouveau";
                 this.Contrats.Add(contrat);
                 this.SaveChanges();
             }
         }
-        
+
         /// <summary>
         /// Supprime le contrat sélectionné
         /// </summary>
         public void DeleteContrat()
         {
-            //Suppression de l'élément
-            this.Contrats.Remove(SelectedContrat);
-            this.SaveChanges();
+            if (!SelectedContrat.Annonce.Any())
+            {
+                //Suppression de l'élément
+                this.Contrats.Remove(SelectedContrat);
+                this.SaveChanges();
+            }
+            else
+            {
+                MessageBox.Show("Ce contrat ne peux pas être supprimé car il est déjà lié à une annonce !");
+            }
+
         }
-
-
         #endregion
 
     }

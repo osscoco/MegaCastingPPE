@@ -17,16 +17,16 @@ namespace MegaCastingV2.DBlib
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Professionnel()
         {
-            this.Annonces = new HashSet<Annonce>();
+            this.Annonce = new HashSet<Annonce>();
         }
     
-        public int ID_PRO { get; set; }
-        public string Prenom_PRO { get; set; }
-        public string Nom_PRO { get; set; }
-        public string Mail_PRO { get; set; }
-        public string Pass_PRO { get; set; }
+        public int Id { get; set; }
+        public string Prenom { get; set; }
+        public string Nom { get; set; }
+        public string Mail { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Annonce> Annonces { get; set; }
+        public virtual ICollection<Annonce> Annonce { get; set; }
     }
 }

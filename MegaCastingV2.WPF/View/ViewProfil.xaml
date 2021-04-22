@@ -21,17 +21,41 @@
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
+            <RowDefinition Height="40"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="PROFIL" FontWeight="Bold"/>
-        <Button Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Name="_ButtonSaveProfil" Click="_ButtonSaveProfil_Click"  Content="Sauvegarder" FontSize="12" Height="40"/>
+        <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" Foreground="White" FontSize="20" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="COMPTE PRO" FontWeight="Bold"/>
+        <Button Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="1" FontSize="12" Name="_ButtonAddPro"  Click="_ButtonAddPro_Click" Content="Ajouter" Height="40" Width="100"/>
+        <Button Grid.Row="0" Grid.Column="3" Grid.ColumnSpan="1" Name="_ButtonSavePro" Click="_ButtonSavePro_Click"  Content="Sauvegarder" Visibility="{Binding SelectedProfessionnel, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Height="40" Width="100" FontSize="12" />
+        <Button Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="1" Name="_ButtonDeletePro" Click="_ButtonDeletePro_Click"  Content="Supprimer" Visibility="{Binding SelectedProfessionnel, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Height="40" Width="100" FontSize="12"/>
 
-        <Label Grid.Row="2" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Mail :" Width="100" Height="40" />
-        <Label Grid.Row="2" Grid.Column="3" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="{Binding CurrentEmployee.Mail_EMP}" Width="100" Height="40" />
+        <Label Grid.Row="2" Grid.Column="2" Foreground="White" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Prénom :" Width="100" Height="40" />
+        <TextBox Name="Prenom_TextBox" Foreground="White" Grid.Row="2" Grid.Column="3" Text="{Binding SelectedProfessionnel.Prenom}" Visibility="{Binding SelectedProfessionnel, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
 
-        <Label Grid.Row="3" Grid.Column="2" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Pass :" Width="100" Height="40" />
-        <Label Grid.Row="3" Grid.Column="3" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="{Binding CurrentEmployee.Pass_EMP}" Width="100" Height="40" />
+        <Label Grid.Row="3" Grid.Column="2" Foreground="White" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Nom :" Width="100" Height="40" />
+        <TextBox Name="Libelle_TextBox" Foreground="White" Grid.Row="3" Grid.Column="3" Text="{Binding SelectedProfessionnel.Nom}" Visibility="{Binding SelectedProfessionnel, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+
+        <Label Grid.Row="4" Grid.Column="2" Foreground="White" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Mail :" Width="100" Height="40" />
+        <TextBox Name="Mail_TextBox" Foreground="White" Grid.Row="4" Grid.Column="3" Text="{Binding SelectedProfessionnel.Mail}" Visibility="{Binding SelectedProfessionnel, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+
+        <Label Grid.Row="5" Grid.Column="2" Foreground="White" FontSize="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"  Content="Pass :" Width="100" Height="40" />
+        <TextBox Name="Pass_TextBox" Foreground="White" Grid.Row="5" Grid.Column="3" Text="{Binding SelectedProfessionnel.Password}" Visibility="{Binding SelectedProfessionnel, Converter={StaticResource _SharedObjectToVsibilityConverter }}" Grid.ColumnSpan="2" FontSize="20" Height="40" Width="200"/>
+        
+        <ListBox 
+        Foreground="White"
+        Grid.Row="2"
+        Grid.RowSpan="5"
+        Grid.Column="0"
+        Grid.ColumnSpan="2"
+        x:Name="_ListBoxPro"
+        ItemsSource="{Binding Professionnels}"
+        DisplayMemberPath="Nom"
+        SelectedItem="{Binding SelectedProfessionnel}"
+            FontSize="12"
+        />
     </Grid>
 
 </UserControl>

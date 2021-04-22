@@ -9,10 +9,10 @@ namespace MegaCastingV2.DBlib
 {
     public partial class Contrat
     {
-        public string FullnameContrat => this.ID_Contrat.ToString() + " - " + this.Libelle_Contrat; //this.SelectedContrat.ToString(); ou this.SelectedContrat.Fullname();
+        public string FullnameContrat => this.Id.ToString() + " - " + this.Nom; //this.SelectedContrat.ToString(); ou this.SelectedContrat.Fullname();
         public override string ToString()
         {
-            return this.Libelle_Contrat.ToString();
+            return this.Nom.ToString();
         }
     }
 }

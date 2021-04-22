@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace MegaCastingV2.WPF.ViewModel
 {
+    /// <summary>
+    /// Modèle de page d'accueil héritant du Modèle Base
+    /// </summary>
     public class ViewModelMainWindow : ViewModelBase
     {
 
@@ -14,7 +17,7 @@ namespace MegaCastingV2.WPF.ViewModel
         /// Constructeur du modèle-vue de la fenêtre principale
         /// </summary>
         /// <param name="entities">Contexte de l'application</param>
-        public ViewModelMainWindow(MegaCastingEntities entities)
+        public ViewModelMainWindow(MegacastingEntities entities)
             :base(entities)
         {
         }

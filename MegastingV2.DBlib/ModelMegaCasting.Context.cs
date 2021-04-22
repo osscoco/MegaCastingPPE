@@ -13,10 +13,10 @@ namespace MegaCastingV2.DBlib
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MegaCastingEntities : DbContext
+    public partial class MegacastingEntities : DbContext
     {
-        public MegaCastingEntities()
-            : base("name=MegaCastingEntities")
+        public MegacastingEntities()
+            : base("name=MegacastingEntities")
         {
         }
     
@@ -25,15 +25,14 @@ namespace MegaCastingV2.DBlib
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Annonce> Annonces { get; set; }
-        public virtual DbSet<Artiste> Artistes { get; set; }
-        public virtual DbSet<Candidature> Candidatures { get; set; }
-        public virtual DbSet<Contrat> Contrats { get; set; }
-        public virtual DbSet<Employe> Employes { get; set; }
-        public virtual DbSet<Metier> Metiers { get; set; }
-        public virtual DbSet<Professionnel> Professionnels { get; set; }
-        public virtual DbSet<Statut> Statuts { get; set; }
-        public virtual DbSet<Ville> Villes { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Annonce> Annonce { get; set; }
+        public virtual DbSet<Artiste> Artiste { get; set; }
+        public virtual DbSet<Candidature> Candidature { get; set; }
+        public virtual DbSet<Contrat> Contrat { get; set; }
+        public virtual DbSet<Employe> Employe { get; set; }
+        public virtual DbSet<Metier> Metier { get; set; }
+        public virtual DbSet<Professionnel> Professionnel { get; set; }
+        public virtual DbSet<Statut> Statut { get; set; }
+        public virtual DbSet<Ville> Ville { get; set; }
     }
 }

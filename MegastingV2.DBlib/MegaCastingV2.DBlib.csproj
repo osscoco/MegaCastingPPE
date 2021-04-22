@@ -36,10 +36,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -55,81 +55,79 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Annonce.cs">
-      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
+      <DependentUpon>ModelMegacasting.tt</DependentUpon>
     </Compile>
     <Compile Include="Artiste.cs">
-      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
+      <DependentUpon>ModelMegacasting.tt</DependentUpon>
     </Compile>
     <Compile Include="Candidature.cs">
-      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
+      <DependentUpon>ModelMegacasting.tt</DependentUpon>
     </Compile>
     <Compile Include="Contrat.cs">
-      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
+      <DependentUpon>ModelMegacasting.tt</DependentUpon>
     </Compile>
     <Compile Include="Employe.cs">
-      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
+      <DependentUpon>ModelMegacasting.tt</DependentUpon>
     </Compile>
     <Compile Include="Metier.cs">
-      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
+      <DependentUpon>ModelMegacasting.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelMegaCasting.Context.cs">
+    <Compile Include="ModelMegacasting.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelMegaCasting.Context.tt</DependentUpon>
+      <DependentUpon>ModelMegacasting.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelMegaCasting.cs">
+    <Compile Include="ModelMegacasting.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
+      <DependentUpon>ModelMegacasting.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelMegaCasting.Designer.cs">
+    <Compile Include="ModelMegacasting.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelMegaCasting.edmx</DependentUpon>
+      <DependentUpon>ModelMegacasting.edmx</DependentUpon>
     </Compile>
     <Compile Include="Partial\Annonce.cs" />
     <Compile Include="Partial\Contrat.cs" />
     <Compile Include="Professionnel.cs">
-      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
+      <DependentUpon>ModelMegacasting.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Statut.cs">
-      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
-    </Compile>
-    <Compile Include="sysdiagram.cs">
-      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
+      <DependentUpon>ModelMegacasting.tt</DependentUpon>
     </Compile>
     <Compile Include="Ville.cs">
-      <DependentUpon>ModelMegaCasting.tt</DependentUpon>
+      <DependentUpon>ModelMegacasting.tt</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <EntityDeploy Include="ModelMegaCasting.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelMegaCasting.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="ModelMegaCasting.edmx.diagram">
-      <DependentUpon>ModelMegaCasting.edmx</DependentUpon>
-    </None>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelMegaCasting.Context.tt">
+    <EntityDeploy Include="ModelMegacasting.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelMegacasting.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="ModelMegacasting.edmx.diagram">
+      <DependentUpon>ModelMegacasting.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ModelMegacasting.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelMegaCasting.edmx</DependentUpon>
-      <LastGenOutput>ModelMegaCasting.Context.cs</LastGenOutput>
+      <LastGenOutput>ModelMegacasting.Context.cs</LastGenOutput>
+      <DependentUpon>ModelMegacasting.edmx</DependentUpon>
     </Content>
-    <Content Include="ModelMegaCasting.tt">
+    <Content Include="ModelMegacasting.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelMegaCasting.edmx</DependentUpon>
-      <LastGenOutput>ModelMegaCasting.cs</LastGenOutput>
+      <DependentUpon>ModelMegacasting.edmx</DependentUpon>
+      <LastGenOutput>ModelMegacasting.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

@@ -17,17 +17,17 @@ namespace MegaCastingV2.DBlib
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Artiste()
         {
-            this.Candidatures = new HashSet<Candidature>();
+            this.Candidature = new HashSet<Candidature>();
         }
     
-        public int ID_ART { get; set; }
-        public string Prenom_ART { get; set; }
-        public string Nom_ART { get; set; }
-        public System.DateTime Date_Nai_ART { get; set; }
-        public string Mail_ART { get; set; }
-        public string Pass_ART { get; set; }
+        public int Id { get; set; }
+        public string Prenom { get; set; }
+        public string Nom { get; set; }
+        public System.DateTime Date_Naissance { get; set; }
+        public string Mail { get; set; }
+        public string Password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Candidature> Candidatures { get; set; }
+        public virtual ICollection<Candidature> Candidature { get; set; }
     }
 }

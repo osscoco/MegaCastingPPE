@@ -9,11 +9,11 @@ namespace MegaCastingV2.DBlib
 {
     public partial class Annonce
     {
-        public string FullnameAnnonce => this.ID_ANN.ToString() + " - " + this.Intitulée_ANN;  //this.SelectedAnnonce.ToString(); ou this.SelectedAnnonce.FullnameAnnonce();
+        public string FullnameAnnonce => this.Id.ToString() + " - " + this.Nom;  //this.SelectedAnnonce.ToString(); ou this.SelectedAnnonce.FullnameAnnonce();
 
         public override string ToString()
         {
-            return this.Intitulée_ANN.ToString();
+            return this.Nom.ToString();
         }
     }
 }

@@ -7,10 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Forms.VisualStyles;
 
 namespace MegaCastingV2.WPF.ViewModel
 {
+    /// <summary>
+    /// Modèle de Ville héritant du Modèle Base 
+    /// </summary>
     public class ViewModelVille : ViewModelBase
     {
         #region Attributes
@@ -55,38 +59,25 @@ namespace MegaCastingV2.WPF.ViewModel
         /// Permet de lister les villes dans la vue
         /// </summary>
         /// <param name="entities"></param>
-        public ViewModelVille(MegaCastingEntities entities)
+        public ViewModelVille(MegacastingEntities entities)
             : base(entities)
         {
-            this.Entities.Villes.ToList();
-            this.Villes = this.Entities.Villes.Local;
+            this.Entities.Ville.ToList();
+            this.Villes = this.Entities.Ville.Local;
         }
 
         #endregion
 
 
         #region Methods
-
         /// <summary>
-        /// Sauvegarde les modifications
+        /// Sauvegarder une ville existante
         /// </summary>
-        public void SaveChangesVerifySauvegarde()
-        {
-            //if(!this.Entities.Contrats
-            //.Any(contrat => contrat.ID_Contrat == 0 && contrat.Libelle_Contrat == SelectedContrat.Libelle_Contrat && SelectedContrat.ID_Contrat != contrat.ID_Contrat)
-            //)//Si un Id_Contrat est différent de 0 et un Libelle_Contrat est différent de Libelle_Selected et Si un Id Contrat est différent de Id Selected au moment (Au moment de modifier)
-            //{
-            this.Entities.SaveChanges();
-            // }
-            // else
-            //{
-            //MessageBox.Show("Vous avez déjà une ville de ce nom !");
-            //}
-        }
-
         public void SaveChanges()
         {
             this.Entities.SaveChanges();
+            Entities.ChangeTracker.Entries().Where(type => type.State == System.Data.Entity.EntityState.Modified).ToList().ForEach(type => type.Reload());
+            CollectionViewSource.GetDefaultView(Villes).Refresh();
         }
 
 
@@ -96,12 +87,12 @@ namespace MegaCastingV2.WPF.ViewModel
         /// </summary>
         public void AddVille()
         {
-            if (!this.Entities.Villes
-                .Any(type => type.Libellée_VILLE == "Nouveau")//Si dans la liste de villes il n'existe pas d'élément "Nouveau"
+            if (!this.Entities.Ville
+                .Any(type => type.Nom == "Nouveau")//Si dans la liste de villes il n'existe pas d'élément "Nouveau"
                 )
             {
                 Ville ville = new Ville();
-                ville.Libellée_VILLE = "Nouveau";
+                ville.Nom = "Nouveau";
                 this.Villes.Add(ville);
                 this.SaveChanges();
             }
@@ -112,9 +103,15 @@ namespace MegaCastingV2.WPF.ViewModel
         /// </summary>
         public void DeleteVille()
         {
-            //Suppression de l'élément
-            this.Villes.Remove(SelectedVille);
-            this.SaveChanges();
+            if (!SelectedVille.Annonce.Any())
+            {
+                //Suppression de l'élément
+                this.Villes.Remove(SelectedVille);
+                this.SaveChanges();
+            }else
+            {
+                MessageBox.Show("Cette ville ne peux pas être supprimé car il est déjà lié à une annonce !");
+            }
         }
 
 

@@ -21,6 +21,9 @@ namespace MegaCastingV2.WPF.View
     /// </summary>
     public partial class ViewAnnonce : UserControl
     {
+        /// <summary>
+        /// Initialise la vue de l'annonce
+        /// </summary>
         public ViewAnnonce()
         {
             InitializeComponent();
@@ -35,16 +38,16 @@ namespace MegaCastingV2.WPF.View
         {
             ((ViewModelAnnonce)this.DataContext).AddAnnonce();
         }
-        // <summary>
+        /// <summary>
         /// Défini le comportement lors du clic sur le bouton de sauvegarde
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void _ButtonSaveAnnonce_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelAnnonce)this.DataContext).Save(Libelle_TextBox.Text);
+            ((ViewModelAnnonce)this.DataContext).SaveChanges();
         }
-        // <summary>
+        /// <summary>
         /// Défini le comportement lors du clic sur le bouton de suppression
         /// </summary>
         /// <param name="sender"></param>

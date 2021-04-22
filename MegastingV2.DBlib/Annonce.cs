@@ -17,14 +17,15 @@ namespace MegaCastingV2.DBlib
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Annonce()
         {
-            this.Candidatures = new HashSet<Candidature>();
+            this.Candidature = new HashSet<Candidature>();
         }
     
-        public int ID_ANN { get; set; }
-        public string Intitulée_ANN { get; set; }
-        public System.DateTime Date_Pub_ANN { get; set; }
-        public System.DateTime Date_Deb_ANN { get; set; }
-        public Nullable<System.DateTime> Date_Fin_ANN { get; set; }
+        public int Id { get; set; }
+        public string Nom { get; set; }
+        public System.DateTime Date_Publication { get; set; }
+        public System.DateTime Date_Debut { get; set; }
+        public Nullable<System.DateTime> Date_Fin { get; set; }
+        public string Description { get; set; }
         public int IdContrat { get; set; }
         public int IdPro { get; set; }
         public int IdEmp { get; set; }
@@ -37,6 +38,6 @@ namespace MegaCastingV2.DBlib
         public virtual Professionnel Professionnel { get; set; }
         public virtual Ville Ville { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Candidature> Candidatures { get; set; }
+        public virtual ICollection<Candidature> Candidature { get; set; }
     }
 }

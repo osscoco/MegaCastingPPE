@@ -21,6 +21,9 @@ namespace MegaCastingV2.WPF.View
     /// </summary>
     public partial class ViewContrat : UserControl
     {
+        /// <summary>
+        /// Initialise la vue du contrat
+        /// </summary>
         public ViewContrat()
         {
             InitializeComponent();
@@ -35,16 +38,16 @@ namespace MegaCastingV2.WPF.View
         {
             ((ViewModelContrat)this.DataContext).AddContrat();
         }
-        // <summary>
+        /// <summary>
         /// Défini le comportement lors du clic sur le bouton de sauvegarde
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void _ButtonSaveContrat_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelContrat)this.DataContext).SaveChangesVerifySauvegarde();
+            ((ViewModelContrat)this.DataContext).SaveChanges();
         }
-        // <summary>
+        /// <summary>
         /// Défini le comportement lors du clic sur le bouton de suppression
         /// </summary>
         /// <param name="sender"></param>

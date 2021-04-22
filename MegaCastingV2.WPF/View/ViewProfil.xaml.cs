@@ -21,28 +21,41 @@ namespace MegaCastingV2.WPF.View
     /// </summary>
     public partial class ViewProfil : UserControl
     {
+        /// <summary>
+        /// Initialise la vue de gestion des profils de Professionnel
+        /// </summary>
         public ViewProfil()
         {
             InitializeComponent();
         }
 
-        // <summary>
+
+        /// <summary>
+        /// Défini le comportement lors du clic sur le bouton d'ajout
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void _ButtonAddPro_Click(object sender, RoutedEventArgs e)
+        {
+            ((ViewModelProfessionnel)this.DataContext).AddPro();
+        }
+        /// <summary>
         /// Défini le comportement lors du clic sur le bouton de sauvegarde
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _ButtonSaveProfil_Click(object sender, RoutedEventArgs e)
+        private void _ButtonSavePro_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelEmploye)this.DataContext).SaveChanges();
+            ((ViewModelProfessionnel)this.DataContext).SaveChanges();
         }
-        // <summary>
+        /// <summary>
         /// Défini le comportement lors du clic sur le bouton de suppression
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void _ButtonDeleteProfil_Click(object sender, RoutedEventArgs e)
+        private void _ButtonDeletePro_Click(object sender, RoutedEventArgs e)
         {
-            ((ViewModelEmploye)this.DataContext).DeleteProfil();
+            ((ViewModelProfessionnel)this.DataContext).DeletePro();
         }
     }
 }

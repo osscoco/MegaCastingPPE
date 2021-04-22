@@ -17,13 +17,13 @@ namespace MegaCastingV2.DBlib
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Ville()
         {
-            this.Annonces = new HashSet<Annonce>();
+            this.Annonce = new HashSet<Annonce>();
         }
     
-        public int ID_Ville { get; set; }
-        public string Libellée_VILLE { get; set; }
+        public int Id { get; set; }
+        public string Nom { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Annonce> Annonces { get; set; }
+        public virtual ICollection<Annonce> Annonce { get; set; }
     }
 }

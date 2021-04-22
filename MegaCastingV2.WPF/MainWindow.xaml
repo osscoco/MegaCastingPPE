@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:MegaCastingV2.WPF"
         mc:Ignorable="d"
         xmlns:view="clr-namespace:MegaCastingV2.WPF.View"
-        Title="MegaCasting" MinHeight="450" Height="450" Width="800"
+        Title="MegaCasting" MinHeight="450" Height="700" Width="1000"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -18,16 +18,19 @@
         ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10" />
+            <ColumnDefinition Width="15" />
             <ColumnDefinition Width="200" />
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="15"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="Images/background_image.jpg" Stretch="UniformToFill" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
 
-        <Grid Background="#679F5A" Grid.ColumnSpan="3" Margin="0,0,575,0" Grid.RowSpan="2">
+        <Grid Grid.ColumnSpan="3" Margin="0,0,775,0" Grid.RowSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*" />
                 <RowDefinition Height="40"/>
@@ -36,12 +39,14 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="*" />
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
                 <RowDefinition />
             </Grid.RowDefinitions>
-
-
             
-
             <Button 
         Background="Blue"
         VerticalAlignment="Center"
@@ -50,7 +55,7 @@
         Height="40"
         Name="ButtonManageAnnonce"
         Click="ButtonManageAnnonce_Click"
-        Margin="30,35,30,25" Grid.RowSpan="2">
+        Grid.Row="1">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Announcement"/>
                     <Label Foreground="White" Content="Annonces"></Label>
@@ -64,7 +69,8 @@
         Width="150"
         Height="40"
         Name="ButtonManageContrat"
-        Click="ButtonManageContrat_Click" Margin="30,36,30,24" Grid.Row="1" Grid.RowSpan="2">
+        Click="ButtonManageContrat_Click"
+        Grid.Row="3">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Contract"/>
                     <Label Foreground="White" Content="Contrats"></Label>
@@ -79,9 +85,9 @@
         Height="40"
         Name="ButtonManageMetier"
         Click="ButtonManageMetier_Click"
-        Margin="30,0" Grid.Row="3"
+        Grid.Row="5"
         >
-        
+
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Work"/>
                     <Label Foreground="White" Content="Métiers"></Label>
@@ -96,7 +102,7 @@
         Height="40"
         Name="ButtonManageVille"
         Click="ButtonManageVille_Click"
-        Margin="30,26,30,34" Grid.Row="4" Grid.RowSpan="2">
+        Grid.Row="7">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="City"/>
                     <Label Foreground="White" Content="Villes"></Label>
@@ -111,10 +117,10 @@
         Height="40"
         Name="Profil"
         Click="ButtonManageProfil_Click"
-        Margin="30,33,30,27" Grid.Row="5" Grid.RowSpan="2">
+        Grid.Row="9">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="Account"/>
-                    <Label Foreground="White" Content="Profil"></Label>
+                    <Label Foreground="White" Content="Professionnels"></Label>
                 </StackPanel>
             </Button>
 
@@ -126,52 +132,62 @@
         Height="40"
         Name="ButtonManageQuit"
         Click="ButtonManageQuit_Click"
-        Margin="25,58.2,25,18.6" Grid.Row="6" Grid.RowSpan="2">
+        Grid.Row="11">
                 <StackPanel Orientation="Horizontal">
                     <materialDesign:PackIcon Kind="ExitToApp"/>
                     <Label Foreground="White" Content="Déconnexion"></Label>
                 </StackPanel>
             </Button>
-
         </Grid>
 
         <DockPanel x:Name="DockPanelView" Grid.Column="2" Grid.RowSpan="2">
-            <view:ViewMain></view:ViewMain>
+            <view:ViewMain Width="578"/>
         </DockPanel>
-        <Grid x:Name="_GridAuthentication" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Opacity="0.95" Background="DarkSlateGray" Visibility="Collapsed" >
+        <Grid x:Name="_GridAuthentication" Width="1000" Height="700" Grid.Row="0" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="3" Opacity="0.993" Background="DarkSlateGray" Visibility="Visible">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="375"/>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="375"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="auto"/>
-                <RowDefinition Height="*"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="150"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="150"/>
             </Grid.RowDefinitions>
-            <Label  Grid.Row="1" Grid.Column="1" Foreground="White" >Identifiant :</Label>
-            <Label  Grid.Row="2" Grid.Column="1" Foreground="White" >Mot de passe :</Label>
-            <TextBox x:Name="_TextBoxId" Grid.Row="1" Grid.Column="2" Width="150" Background="White" Margin="3" />
-            <PasswordBox x:Name="_TextBoxPassWord" Grid.Row="2" Grid.Column="2" Background="White"  Margin="3" />
-            <Button  Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" x:Name="_ButtonConnect" Click="_ButtonConnect_Click" >
-                <StackPanel Orientation="Horizontal">
-                    <Label Foreground="White"
-                 Content="  Se Connecter   "></Label>
-                    <materialDesign:PackIcon Kind="LoginVariant" Width="25" Height="25" />
+            
+            <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="6" Height="700" Width="1000" VerticalAlignment="Top" CornerRadius="0 0 180 0" Background="#100E17"/>
+            <Label Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="35" FontFamily="Times New Roman" FontWeight="Bold" Foreground="White" Content="Se connecter"/>
 
+            <StackPanel Grid.Row="2" Grid.Column="1" Grid.RowSpan="3" Width="250">
+                <StackPanel Orientation="Horizontal" Height="100">
+                    <materialDesign:PackIcon Kind="User" Width="40" Height="40" VerticalAlignment="Center" Foreground="White"/>
+                    <TextBox x:Name="_TextBoxId" Grid.Row="4" Grid.Column="1" Width="200" materialDesign:HintAssist.Hint="            Pseudo" VerticalAlignment="Center"  FontSize="20" Background="White"/>
                 </StackPanel>
-            </Button>
-            <Label Name="_LabelErrorMessage" Visibility="Hidden" Background="Red" Opacity="0.5" Foreground="White" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2">Le mot de passe ou l'identifiant n'est pas correct</Label>
+                <StackPanel Orientation="Horizontal" Height="50">
+                    <materialDesign:PackIcon Grid.Row="5" Grid.Column="1" Kind="Lock" Width="40" Height="40" VerticalAlignment="Center" Foreground="White"/>
+                    <PasswordBox x:Name="_TextBoxPassWord" Grid.Row="5" Grid.Column="1" Width="200" materialDesign:HintAssist.Hint="        Mot de Passe" VerticalAlignment="Center"  FontSize="20" Background="White"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Height="100">
+                    <Button HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="_ButtonConnect" Click="_ButtonConnect_Click" Width="250">
+                        <StackPanel Orientation="Horizontal">
+                            <Label Foreground="White" Content="Se Connecter"/>
+                            <materialDesign:PackIcon Kind="LoginVariant" Width="25" Height="25"/>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <StackPanel>
+                    <Label Name="_LabelErrorMessage" Visibility="Collapsed" Background="Red" Opacity="0.5" Foreground="White" Grid.Row="5" VerticalAlignment="Center"  HorizontalAlignment="Center" Grid.Column="1">Pseuso ou Mot de Passe incorrect</Label>
+                </StackPanel>
+            </StackPanel>
+
+           
+            
 
         </Grid>
 
     </Grid>
-
-
 
 </Window>

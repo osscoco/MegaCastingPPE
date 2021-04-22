@@ -1,8 +1,10 @@
 ﻿CREATE TABLE [dbo].[Statut] (
-    [ID_Statut]       INT           IDENTITY (1, 1) NOT NULL,
-    [Libellée_Statut] NVARCHAR (50) NOT NULL,
-    CONSTRAINT [PK_Statut] PRIMARY KEY CLUSTERED ([ID_Statut] ASC)
+    [Id]     INT           IDENTITY (1, 1) NOT NULL,
+    [Valeur] NVARCHAR (50) NOT NULL,
+    CONSTRAINT [PK_Statut] PRIMARY KEY CLUSTERED ([Id] ASC)
 );
+
+
 
 
 
